@@ -226,6 +226,9 @@ input[type="button"].button-primary:focus {
   margin-left: 145px;
  width: 14vw;
 }
+#resultado .nuevodos{
+  margin-left: 145px;
+}
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 input[type="email"],

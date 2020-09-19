@@ -20,12 +20,12 @@
     <div class="container">
         <div class="row">
             <div class="one-half column">
-                <img src="img/cryptomonedas.png">
+                <img src="img/cryptomonedas.png" alt="Imagen_de_criptos">
             </div>
             <div class="one-half column">
                 <form id="formulario">
                     <div class="row">
-                        <label>Elige tu Moneda</label>
+                        <label id="uno">Elige tu Moneda</label>
                         <select
                             class="u-full-width"
                             id="moneda"
@@ -42,7 +42,7 @@
 
                     <div class="row">
                     <div>
-                        <label>Elige tu Criptomoneda</label>
+                        <label id="dos">Elige tu Criptomoneda</label>
                         <select 
                             class="u-full-width"
                             id="criptomonedas"
@@ -52,7 +52,7 @@
                         </select>
                     </div>
                     </div>
-                    <input class="button-primary u-full-width" type="submit" value="Cotizar" />
+                    <input class="button-primary u-full-width" type="submit" value="Cotizar" id="But1"/>
 
                     <div id="resultado" class="resultado"></div>
                 </form>
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="js/app.js" type="module"></script>
     <footer>
         <p>&copy; Diego y Navarro</p>
     </footer>
