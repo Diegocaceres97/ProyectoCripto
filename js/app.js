@@ -74,11 +74,15 @@ function mostrarCotizacion(cotizacion){
 const valor = formatNumber.new(parseInt(PRICE));
     const precio = document.createElement('p');
     precio.classList.add('precio');
-    precio.innerHTML = `El precio es: <span>${valor}</span> <br>
+    precio.innerHTML = `El precio es: <span>$${valor}</span> <br>
     
-    El precio mas alto del dia: ${formatNumber.new(parseInt(HIGHDAY))}`;
+    El precio mas alto del dia: $${formatNumber.new(parseInt(HIGHDAY))}`;
+    const boton = document.createElement('button');
+    boton.classList.add('buttom-secondary','nuevo');
+
 
     resultado.appendChild(precio);
+    resultado.appendChild(boton);
 }
 function cleanHtml(){
     while(resultado.firstChild){
