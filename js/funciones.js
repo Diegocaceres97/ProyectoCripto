@@ -5,9 +5,10 @@ import { criptomonedasSelect,
 resultado,
 uno,
 dos,
-But1, monedaSelect } from "./selectores.js";
+But1, 
+monedaSelect,
+But2 } from "./selectores.js";
 import { formatNumber } from "./formatNumber.js";
-
 //creamos el promise
 const obtenerCriptomonedas = criptomonedas =>new Promise(resolve=>{
     resolve(criptomonedas);
@@ -73,6 +74,7 @@ fetch(url).then(respuesta=>respuesta.json())
 .then(cotizacion => mostrarCotizacion(cotizacion.RAW[criptomoneda][moneda]))
 }
 export function mostrarCotizacion(cotizacion){
+    But2.remove();
     const {PRICE, HIGHDAY,LOWDAY,CHANGEPCT24HOUR, LASTUPDATE} = cotizacion;
 const valor = formatNumber.new(parseInt(PRICE));
     const precio = document.createElement('p');
@@ -87,7 +89,11 @@ const valor = formatNumber.new(parseInt(PRICE));
     resultado.appendChild(precio);
     resultado.appendChild(boton);
     boton.addEventListener('click',()=>{
-        oferta();
+       
+        
+        
+         nuevoBotoncancelar(); //creamos el nuevo boton al ofertar de cancelar
+         oferta();
     })
 }
 export function cleanHtml(){
@@ -110,6 +116,13 @@ function removeOptions(selectElement) {
        selectElement.remove(i);
     }
  }
+ function nuevoBotoncancelar(){
+    document.querySelector('.nuevo').remove();//eliminamos el boton antiguo de oferta
+    const boton = document.createElement('button');
+    boton.classList.add('buttom-secondary','nuevodos');
+  boton.textContent='CANCELAR';
+    resultado.appendChild(boton);
+ }
  function llenar(select){
     const ofertas = ['Criptomoneda','Moneda','Producto','Servicio'];
     ofertas.forEach(valor =>{
@@ -118,17 +131,33 @@ function removeOptions(selectElement) {
     option.textContent=valor;
     select.appendChild(option);
     });
+    
   DuringOferta();
  }
  function DuringOferta(){
-    document.querySelector('.nuevo').remove();
-    const boton = document.createElement('button');
-    boton.classList.add('buttom-secondary','nuevodos');
-  boton.textContent='CANCELAR';
-    resultado.appendChild(boton);
+    const boton = document.querySelector('.nuevodos');
     boton.addEventListener('click',()=>
     location.reload()
     );
+    But1.addEventListener('click',()=>{
+        activeModal();
+    })
  }
+ function activeModal(){
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
+    // When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+ }
+}
  
 

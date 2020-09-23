@@ -5,3 +5,4 @@ export const resultado = document.querySelector('#resultado');
 export const uno = document.querySelector('#uno');
 export const dos = document.querySelector('#dos');
 export const But1 = document.querySelector('#But1');
+export const But2 = document.querySelector('#But2');

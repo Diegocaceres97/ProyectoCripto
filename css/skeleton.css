@@ -229,6 +229,14 @@ input[type="button"].button-primary:focus {
 #resultado .nuevodos{
   margin-left: 145px;
 }
+.button.button-tercer,
+button.button-tercer,
+input[type="submit"].button-tercer,
+input[type="reset"].button-tercer,
+input[type="button"].button-tercer {
+  color: #FFF;
+  background-color: greenyellow;
+  border-color: rgb(133, 194, 41); }
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 input[type="email"],
