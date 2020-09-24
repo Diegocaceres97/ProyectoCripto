@@ -196,3 +196,12 @@ footer p {
   text-decoration: none;
   cursor: pointer;
 }
+
+#But2{
+  margin-top: -15px;
+}
+.nuevodos:active,
+.nuevodos:hover{
+background: #d42017;
+}
+

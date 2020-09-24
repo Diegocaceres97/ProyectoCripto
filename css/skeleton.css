@@ -237,6 +237,14 @@ input[type="button"].button-tercer {
   color: #FFF;
   background-color: greenyellow;
   border-color: rgb(133, 194, 41); }
+  .button.button-four,
+button.button-four,
+input[type="submit"].button-four,
+input[type="reset"].button-four,
+input[type="button"].button-four {
+  color: #FFF;
+  background-color: rgb(223, 22, 22);
+  border-color: rgb(218, 26, 26); }
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 input[type="email"],

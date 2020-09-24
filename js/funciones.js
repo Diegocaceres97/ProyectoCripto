@@ -92,8 +92,8 @@ const valor = formatNumber.new(parseInt(PRICE));
        
         
         
-         nuevoBotoncancelar(); //creamos el nuevo boton al ofertar de cancelar
-         oferta();
+         nuevoBotoncancelar(true); //creamos el nuevo boton al ofertar de cancelar
+         oferta(true);
     })
 }
 export function cleanHtml(){
@@ -101,63 +101,78 @@ export function cleanHtml(){
 resultado.removeChild(resultado.firstChild);
     }
 }
-export function oferta(){
+export function oferta(valor){
     uno.textContent='¿Que ofertaras?';
     dos.textContent='¿Que esperas obtener?';
     But1.value='¡Ofertar ya!';
     removeOptions(criptomonedasSelect);
     removeOptions(monedaSelect);
-       llenar(monedaSelect);
-       llenar(criptomonedasSelect);
-}
-function removeOptions(selectElement) {
-    var i, L = selectElement.options.length - 1;
+       llenar(monedaSelect,valor);//llenamos los select con las nuevas opciones
+       llenar(criptomonedasSelect,valor);//para poder ofertar adecuadamente
+       console.info(formulario.firstElementChild.nextElementSibling);
+       
+      nuevoselementosOferta();
+    
+    //formulario.appendChild(redes);
+    }
+function removeOptions(selectElement) {//con esta funcion eliminamos 
+    var i, L = selectElement.options.length - 1;//las antiguas opciones del select
     for(i = L; i >= 0; i--) {
        selectElement.remove(i);
     }
  }
- function nuevoBotoncancelar(){
+ export function nuevoBotoncancelar(entrada){
+     if(entrada==true){
     document.querySelector('.nuevo').remove();//eliminamos el boton antiguo de oferta
     const boton = document.createElement('button');
     boton.classList.add('buttom-secondary','nuevodos');
   boton.textContent='CANCELAR';
     resultado.appendChild(boton);
+}
  }
- function llenar(select){
-    const ofertas = ['Criptomoneda','Moneda','Producto','Servicio'];
-    ofertas.forEach(valor =>{
+ function llenar(select,valor){//sabremos el valor que llega (el cual sera un booleano) para saber
+    const ofertas = ['Criptomoneda','Moneda','Producto','Servicio'];//si la oferta se hace
+    ofertas.forEach(valor =>{//desde el primer momento o despues de buscar el precio de una cripto
      const option = document.createElement('option');
      option.value=valor;
     option.textContent=valor;
     select.appendChild(option);
     });
     
-  DuringOferta();
+  DuringOferta(valor);
  }
- function DuringOferta(){
+ function DuringOferta(valor){
+     if(valor==true){
     const boton = document.querySelector('.nuevodos');
     boton.addEventListener('click',()=>
     location.reload()
     );
-    But1.addEventListener('click',()=>{
-        activeModal();
-    })
+     }else{
+         But2.value='Cancelar';
+But2.classList.remove('button-tercer');
+But2.classList.add('button-four');
+
+But2.addEventListener('click',()=>{
+    location.reload()
+})
+     }
  }
- function activeModal(){
-    var modal = document.getElementById("myModal");
-    var span = document.getElementsByClassName("close")[0];
-    modal.style.display = "block";
-    // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-  }
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
- }
-}
- 
+ function nuevoselementosOferta(){
+    const parrafo = document.createElement('label');//creamos los imput y labels que se mostraran
+    const redes = document.createElement('input');//al momento de alguien querer ofertar algo
+    const redes1 = document.createElement('input');
+    const redes2 = document.createElement('input');
+    parrafo.textContent = 'Link Redes de contacto';
+    redes.classList.add('u-full-width');
+    redes1.classList.add('u-full-width');
+    redes2.classList.add('u-full-width');
+    redes.placeholder='Coloca el link de tu red social para que te contacten';
+    redes1.placeholder='Coloca el link de tu red social para que te contacten';
+    redes2.placeholder='Coloca el link de tu red social para que te contacten';
+    parrafo.style='margin-top:-5px';
+    formulario.firstElementChild.nextElementSibling.appendChild(parrafo);//avanzamos en a estrucura del formulario para
+    formulario.firstElementChild.nextElementSibling.appendChild(redes);//colocar los elementos nuevos en su respectivo sitio
+    formulario.firstElementChild.nextElementSibling.appendChild(redes1);//colocar los elementos nuevos en su respectivo sitio
+    formulario.firstElementChild.nextElementSibling.appendChild(redes2);//colocar los elementos nuevos en su respectivo sitio
+ } 
 
