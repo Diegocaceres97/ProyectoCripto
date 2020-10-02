@@ -1,7 +1,7 @@
 import { criptomonedasSelect,
     formulario,
 monedaSelect,
-But2 } from "./selectores.js";
+But2, But1 } from "./selectores.js";
 import { consultarCriptos,
 submitFormulario,
 SelecccionMoneda,
@@ -29,7 +29,9 @@ span.onclick = function() {
 //Llamos al evento de inicio que es cuando carga la pagina
 document.addEventListener('DOMContentLoaded',()=>{
 consultarCriptos();
+
 formulario.addEventListener('submit',submitFormulario);
+
 criptomonedasSelect.addEventListener('change',SelecccionMoneda);
 monedaSelect.addEventListener('change',SelecccionMoneda);
 But2.addEventListener('click',()=>{

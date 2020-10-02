@@ -9,6 +9,7 @@ But1,
 monedaSelect,
 But2 } from "./selectores.js";
 import { formatNumber } from "./formatNumber.js";
+import { nuevoselementosOferta, oferto} from "./oferta.js";
 //creamos el promise
 const obtenerCriptomonedas = criptomonedas =>new Promise(resolve=>{
     resolve(criptomonedas);
@@ -38,15 +39,25 @@ export function selectCriptos(criptomonedas){
 }
 export function submitFormulario(e){
     e.preventDefault();
+    
     const {moneda, criptomoneda} = objBusqueda;
-
     if (moneda==''||criptomoneda=='') {
         mostrarAlerta('Ambos campos son obligatorios');
         return;
-    } 
+    }
+    
     //Consultar la API con los resultados
+    if(But1.value!='¡Ofertar ya!'){
+        
     ConsultarAPI();
-}
+    }else{
+        if(document.querySelector('.entrada').value==''&&document.querySelector('.entrada1').value==''&&
+        document.querySelector('.entrada2').value==''){
+            mostrarAlerta('Debe al menos colocar una url');
+            return;
+        }
+        oferto();
+}}
 export function SelecccionMoneda(e){
    objBusqueda[e.target.name] = e.target.value;
    //console.info(objBusqueda);
@@ -89,9 +100,6 @@ const valor = formatNumber.new(parseInt(PRICE));
     resultado.appendChild(precio);
     resultado.appendChild(boton);
     boton.addEventListener('click',()=>{
-       
-        
-        
          nuevoBotoncancelar(true); //creamos el nuevo boton al ofertar de cancelar
          oferta(true);
     })
@@ -113,6 +121,7 @@ export function oferta(valor){
        
       nuevoselementosOferta();
     
+      
     //formulario.appendChild(redes);
     }
 function removeOptions(selectElement) {//con esta funcion eliminamos 
@@ -131,7 +140,7 @@ function removeOptions(selectElement) {//con esta funcion eliminamos
 }
  }
  function llenar(select,valor){//sabremos el valor que llega (el cual sera un booleano) para saber
-    const ofertas = ['Criptomoneda','Moneda','Producto','Servicio'];//si la oferta se hace
+    const ofertas = ['Elige uno/Choose one','Criptomoneda','Moneda','Producto','Servicio'];//si la oferta se hace
     ofertas.forEach(valor =>{//desde el primer momento o despues de buscar el precio de una cripto
      const option = document.createElement('option');
      option.value=valor;
@@ -157,22 +166,4 @@ But2.addEventListener('click',()=>{
 })
      }
  }
- function nuevoselementosOferta(){
-    const parrafo = document.createElement('label');//creamos los imput y labels que se mostraran
-    const redes = document.createElement('input');//al momento de alguien querer ofertar algo
-    const redes1 = document.createElement('input');
-    const redes2 = document.createElement('input');
-    parrafo.textContent = 'Link Redes de contacto';
-    redes.classList.add('u-full-width');
-    redes1.classList.add('u-full-width');
-    redes2.classList.add('u-full-width');
-    redes.placeholder='Coloca el link de tu red social para que te contacten';
-    redes1.placeholder='Coloca el link de tu red social para que te contacten';
-    redes2.placeholder='Coloca el link de tu red social para que te contacten';
-    parrafo.style='margin-top:-5px';
-    formulario.firstElementChild.nextElementSibling.appendChild(parrafo);//avanzamos en a estrucura del formulario para
-    formulario.firstElementChild.nextElementSibling.appendChild(redes);//colocar los elementos nuevos en su respectivo sitio
-    formulario.firstElementChild.nextElementSibling.appendChild(redes1);//colocar los elementos nuevos en su respectivo sitio
-    formulario.firstElementChild.nextElementSibling.appendChild(redes2);//colocar los elementos nuevos en su respectivo sitio
- } 
-
+ 
