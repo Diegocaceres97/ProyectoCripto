@@ -51,12 +51,25 @@ export function submitFormulario(e){
         
     ConsultarAPI();
     }else{
-        if(document.querySelector('.entrada').value==''&&document.querySelector('.entrada1').value==''&&
-        document.querySelector('.entrada2').value==''){
+        const entradalink1=document.querySelector('.entrada').value;
+        const entradalink2=document.querySelector('.entrada1').value;
+        const entradalink3=document.querySelector('.entrada2').value;
+        if(entradalink1==''&&entradalink2==''&&
+        entradalink3==''){
             mostrarAlerta('Debe al menos colocar una url');
             return;
+        }else{
+            //Vamos a verificar que los links sean validos 
+            const totalLinks = entradalink1+entradalink2+entradalink3;
+            var variable = totalLinks.search('http','https');//Este metodo devuelve un -1 si no encuentra lo buscado en la cadena de texto
+            if(variable == -1){
+                mostrarAlerta('Debe ser un link http o https');
+                return;
+            }else{
+                oferto();
+            }
         }
-        oferto();
+        
 }}
 export function SelecccionMoneda(e){
    objBusqueda[e.target.name] = e.target.value;
@@ -117,7 +130,7 @@ export function oferta(valor){
     removeOptions(monedaSelect);
        llenar(monedaSelect,valor);//llenamos los select con las nuevas opciones
        llenar(criptomonedasSelect,valor);//para poder ofertar adecuadamente
-       console.info(formulario.firstElementChild.nextElementSibling);
+       //console.info(formulario.firstElementChild.nextElementSibling);
        
       nuevoselementosOferta();
     

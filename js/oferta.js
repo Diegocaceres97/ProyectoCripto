@@ -17,5 +17,13 @@ export function nuevoselementosOferta(){
     formulario.firstElementChild.nextElementSibling.appendChild(redes2);//colocar los elementos nuevos en su respectivo sitio
  } 
 export function oferto(){
-   const acerca = prompt('Cuentanos acerca de lo que ofertas','Tell us about your offer');
+   const acerca = prompt('Cuentanos acerca de lo que ofertas/Tell us about your offer');
+   if(acerca==null||acerca==""){
+     location.reload();
+   }else{
+      const valorswal = swal("Good job!", "Éxito!", "success");
+      setTimeout(() => {
+         location.reload();
+      }, 1000);
+   }
 }
