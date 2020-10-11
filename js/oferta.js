@@ -17,6 +17,7 @@ export function nuevoselementosOferta(){
     formulario.firstElementChild.nextElementSibling.appendChild(redes2);//colocar los elementos nuevos en su respectivo sitio
  } 
 export function oferto(){
+   //Con esto rellenamos algo de cuota de informacion para el producto/servicio
    const acerca = prompt('Cuentanos acerca de lo que ofertas/Tell us about your offer');
    if(acerca==null||acerca==""){
      location.reload();

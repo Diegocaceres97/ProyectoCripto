@@ -204,5 +204,24 @@ footer p {
 .nuevodos:hover{
 background: #d42017;
 }
+.contenedor{
+  background: #d2daf7;
+  height: 50vh;
+}
+.ofertado{
+  margin-top: 100px;
+  text-align: center;
+}
+.input-ofer{
+  width: 40vw;
+  margin-top: 30px;
+}
+.input-ofer-radio{
+  display:inline-block;
+}
+span {
+ color: white; 
+}
+
 
 

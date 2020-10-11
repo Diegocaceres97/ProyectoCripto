@@ -88,7 +88,6 @@ export function mostrarAlerta(mensaje){
             divMensaje.remove();
         }, 3000);  
     }
-    
 }
 export function ConsultarAPI(){
     cleanHtml();
